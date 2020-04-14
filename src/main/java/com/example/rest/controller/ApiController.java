@@ -22,7 +22,6 @@ public class ApiController {
 
     @GetMapping("/rest/get")
     public List<User> getUserList() {
-        System.out.println("メソッド呼び出し:getUserList");
         return userService.selectAll();
     }
 
