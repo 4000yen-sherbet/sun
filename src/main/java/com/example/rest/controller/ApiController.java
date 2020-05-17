@@ -3,6 +3,8 @@ package com.example.rest.controller;
 import java.util.List;
 
 import com.example.rest.entity.User;
+import com.example.rest.errors.ErrorResponse;
+import com.example.rest.errors.NotFoundException;
 import com.example.rest.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +40,15 @@ public class ApiController {
         } else {
             return "{\"result\":\"ng\"}";
         }
+    }
+
+    @GetMapping("/rest/error")
+    public String getNotFoundTest() {
+        String result = "hoge";
+
+        ErrorResponse error = new ErrorResponse();
+        error.setErrMessage(result);
+        throw new NotFoundException("foo", error);
+
     }
 }
